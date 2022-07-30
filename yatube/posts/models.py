@@ -1,3 +1,7 @@
+"""
+Модуль для создания классов моделей.
+"""
+
 from django.contrib.auth import get_user_model
 from django.db import models
 
@@ -29,6 +33,9 @@ class Post(models.Model):
                               related_name='groups', blank=True, null=True)
 
     class Meta:
+        """
+        Мета класс для сортировки.
+        """
         ordering = ['-pub_date']
 
 
