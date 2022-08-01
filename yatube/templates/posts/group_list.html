@@ -4,25 +4,25 @@
 {% endblock %}
 {% block content %}
   <div class="container py-5">
-		<h3>Записи сообщества "{{ group.title }}"</h3>
-		<br>
-		<article>
-			{% for post in posts %}
-			  <ul>
-					<li>
-						Автор: {{ post.author.get_full_name }}
-					</li>
-					<li>
-						Дата публикации: {{ post.pub_date|date:date_format}}
-					</li>
-				</ul>
-			    <p>
-						{{ post.text }}
-					</p>
-			  {% if not forloop.last %}
-			    <hr>
-			  {% endif %}
-			{% endfor %}
-		</article>
-	</div>
+    <h3>Записи сообщества "{{ group.title }}"</h3>
+    <br>
+    <article>
+      {% for post in posts %}
+        <ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:date_format}}
+          </li>
+        </ul>
+          <p>
+            {{ post.text }}
+          </p>
+        {% if not forloop.last %}
+          <hr>
+        {% endif %}
+      {% endfor %}
+    </article>
+  </div>
 {% endblock %}

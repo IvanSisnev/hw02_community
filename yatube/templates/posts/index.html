@@ -4,32 +4,32 @@
 {% endblock %}
 {% block content %}
   <div class="container py-5">
-		<h3>Последние обновления на сайте</h3>
-		<br>
-		<article>
-			{% for post in posts %}
-			  <ul>
-					<li>
-						Автор: {{ post.author.get_full_name }}
-					</li>
-					<li>
-						Дата публикации: {{ post.pub_date|date:date_format}}
-					</li>
-					<li>
-						Группа: {{ post.group.title }}
-					</li>
-				</ul>
-			  <p>
-					{{ post.text }}
-				</p>
-			  {% if post.group %}
-			    <a href="{% url 'posts:group_list' post.group.slug %}">
-						Все записи группы "{{ post.group.title }}"</a>
-			  {% endif %}
-			  {% if not forloop.last %}
-			    <hr>
-			  {% endif %}
-			{% endfor %}
-		</article>
-	</div>
+    <h3>Последние обновления на сайте</h3>
+    <br>
+    <article>
+      {% for post in posts %}
+        <ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:date_format}}
+          </li>
+          <li>
+            Группа: {{ post.group.title }}
+          </li>
+        </ul>
+        <p>
+          {{ post.text }}
+        </p>
+        {% if post.group %}
+          <a href="{% url 'posts:group_list' post.group.slug %}">
+            Все записи группы "{{ post.group.title }}"</a>
+        {% endif %}
+        {% if not forloop.last %}
+          <hr>
+        {% endif %}
+      {% endfor %}
+    </article>
+  </div>
 {% endblock %}
