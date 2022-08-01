@@ -17,10 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    # Главная страница
     path('', include('posts.urls', namespace='posts')),
-    # Записи сообщества
-    path('group/<slug:slug>/', include('posts.urls')),
-    # Админка
     path('admin/', admin.site.urls),
 ]

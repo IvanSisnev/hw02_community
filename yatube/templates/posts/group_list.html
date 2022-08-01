@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="ru">
 {% extends 'base.html' %}
-<head>
-	{% block title %}
-	<title>{{ title }} {{ group.title }}</title>
-	{% endblock %}
-</head>
-<body>
-	<main>
-		{% block content %}
-		<div class="container py-5">
-			<h3>{{ header }} "{{ group.title }}"</h3>
-			<br>
-			<article>
-				{% for post in posts %}
+{% block title %}
+	<title>{{ header }} {{ group.title }}</title>
+{% endblock %}
+{% block content %}
+	<div class="container py-5">
+		<h3>{{ header }} "{{ group.title }}"</h3>
+		<br>
+		<article>
+			{% for post in posts %}
 				<ul>
 					<li>
 						Автор: {{ post.author.get_full_name }}
@@ -22,16 +16,13 @@
 						Дата публикации: {{ post.pub_date|date:date_format}}
 					</li>
 				</ul>
-				<p>
-					{{ post.text }}
-				</p>
+					<p>
+						{{ post.text }}
+					</p>
 				{% if not forloop.last %}
-				<hr>
+					<hr>
 				{% endif %}
-				{% endfor %}
-			</article>
-		</div>
-		{% endblock %}
-	</main>
-</body>
-</html>
+			{% endfor %}
+		</article>
+	</div>
+{% endblock %}
