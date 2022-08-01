@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}
-	<title> {{ header }} </title>
+  <title>Последние обновления на сайте</title>
 {% endblock %}
 {% block content %}
-	<div class="container py-5">
-		<h3> {{ header }} </h3>
+  <div class="container py-5">
+		<h3>Последние обновления на сайте</h3>
 		<br>
 		<article>
 			{% for post in posts %}
-				<ul>
+			  <ul>
 					<li>
 						Автор: {{ post.author.get_full_name }}
 					</li>
@@ -19,16 +19,16 @@
 						Группа: {{ post.group.title }}
 					</li>
 				</ul>
-				<p>
+			  <p>
 					{{ post.text }}
 				</p>
-				{% if post.group %}
-					<a href="{% url 'posts:group_list' post.group.slug %}">
-					Все записи группы "{{ post.group.title }}"</a>
-				{% endif %}
-				{% if not forloop.last %}
-					<hr>
-				{% endif %}
+			  {% if post.group %}
+			    <a href="{% url 'posts:group_list' post.group.slug %}">
+						Все записи группы "{{ post.group.title }}"</a>
+			  {% endif %}
+			  {% if not forloop.last %}
+			    <hr>
+			  {% endif %}
 			{% endfor %}
 		</article>
 	</div>

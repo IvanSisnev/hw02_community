@@ -9,13 +9,10 @@ def index(request):
     """
     # Шаблон
     template = 'posts/index.html'
-    # Заголовок страницы
-    header_text = 'Последние обновления на сайте'
     # Записи из БД
     posts: Post = Post.objects.all()[:10]
 
     context: dict = {
-        'header': header_text,
         'posts': posts,
         'date_format': Post.date_format,
     }
@@ -28,15 +25,12 @@ def group_posts(request, slug):
     """
     # Шаблон
     template = 'posts/group_list.html'
-    # Заголовок страницы
-    header_text = 'Записи сообщества'
     # Сообщество
     group: Group = get_object_or_404(Group, slug=slug)
     # Записи из БД
     posts: Post = group.posts.all()[:10]
 
     context: dict = {
-        'header': header_text,
         'group': group,
         'posts': posts,
         'date_format': Post.date_format,
